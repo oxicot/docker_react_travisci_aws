@@ -7,3 +7,13 @@ before_install:
 
 script:
   - docker run -e CI=true mlsp/docker_react_travisci_aws npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker"
+  env: "docker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-923445559289"
+  bucket_path: "docker"
+  on:
+    branch: main
